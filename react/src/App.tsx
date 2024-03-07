@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import Section1 from './components/Section1'
-import Section2 from './components/Section2'
+import Navbar from './components/Navbar/Navbar'
+import Footer from './components/Footer/Footer'
+import Section1 from './components/Section1/Section1'
+import Section2 from './components/Section2/Section2'
 
 export type PortfolioOwner = {
   id: number,
