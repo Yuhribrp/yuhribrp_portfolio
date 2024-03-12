@@ -1,12 +1,14 @@
-// Navbar.tsx
+/* import RubyLogo from '../../assets/logo/logo2.png'; */
 import React from 'react';
 import styles from './Navbar.module.css';
-import RubyLogo from '../../assets/logo/logo2.png';
-
+import { CodeBracketSquareIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 const Navbar: React.FC = () => {
-  return (
+ return (
     <nav className={styles.navbar}>
-      <img src={RubyLogo} alt="Logo" className={styles.logo} />
+      <div className="flex items-center">
+        <CodeBracketSquareIcon className="h-5 w-5 text-white" aria-hidden="true" />
+        <span className="ml-2 text-white">Logo</span>
+      </div>
       <div className={styles.dropdown}>
         <button className={styles.dropdownButton}>Menu</button>
         <div className={styles.dropdownContent}>
@@ -16,7 +18,8 @@ const Navbar: React.FC = () => {
         </div>
       </div>
     </nav>
-  );
+ );
 };
 
 export default Navbar;
+

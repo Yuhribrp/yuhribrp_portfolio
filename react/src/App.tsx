@@ -1,3 +1,4 @@
+import '../../public/build/tailwind.css';
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
