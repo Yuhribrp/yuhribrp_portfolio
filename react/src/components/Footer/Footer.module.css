@@ -5,6 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+    margin-top: 3rem;
 }
 
 .container {
@@ -31,7 +32,7 @@
 }
 
 .icons a:hover {
-  color: lightblue;
+  color: rgb(141, 214, 237);
   text-decoration: none;
 }
 
@@ -42,4 +43,3 @@
     gap: 0.5rem;
   }
 }
-

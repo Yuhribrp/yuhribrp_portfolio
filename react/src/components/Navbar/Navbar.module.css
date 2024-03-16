@@ -37,7 +37,7 @@
   display: none;
   position: absolute;
   right: 0;
-  background-color: whitesmoke;
+  background-color: rgba(255, 255, 255, 0.7);
   min-width: 90px;
   z-index: 1;
   font-size: 12px;
@@ -51,6 +51,7 @@
   display: block;
   border-bottom: 1px solid #ddd;
   text-align: center;
+  font-weight: bold;
 }
 
 .dropdownContent a:last-child {
@@ -58,8 +59,10 @@
 }
 
 .dropdownContent a:hover {
-  background-color: #dcdcdc;
-   border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  color: rgb(73, 80, 193);
+  font-weight: bold;
 }
 
 .show {
