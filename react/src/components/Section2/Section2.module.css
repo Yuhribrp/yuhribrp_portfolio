@@ -122,7 +122,6 @@
   border-radius: 10px;
   padding: 4px 8px;
   transform-origin: center;
-    /* Adicione esta linha */
 }
 
 .slideImageName:hover {
@@ -130,6 +129,7 @@
   transform: translateX(-50%) scale(1.1);
   background-color: rgba(255, 255, 255, 0.7);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: #3d43b7!important;
 }
 
 .slide[data-active] {

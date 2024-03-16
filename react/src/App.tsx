@@ -31,7 +31,6 @@ function App() {
       <Navbar />
       <Section1 portfolioOwner={portfolioOwner} />
       <Section2 />
-      <div id="modal-root"></div>
       <Footer />
     </>
   )

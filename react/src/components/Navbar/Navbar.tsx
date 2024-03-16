@@ -1,4 +1,4 @@
-import RubyLogo from '../../assets/logo/logo2.png';
+import YhLogo from '../../assets/logo/logoyh.png';
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './Navbar.module.css';
 
@@ -35,13 +35,13 @@ const Navbar: React.FC = () => {
   return (
     <nav className={styles.navbar}>
       <div className="flex items-center">
-        <img src={RubyLogo} className={`${styles.logo}`} alt="Logo" style={{ transform: `rotate(${rotation}deg)` }} />
+        <img src={YhLogo} className={`${styles.logo}`} alt="Logo" style={{ transform: `rotate(${rotation}deg)` }} />
       </div>
       <div className={styles.dropdown} ref={dropdownRef}>
         <button className={styles.dropdownButton} onClick={() => setIsOpen(!isOpen)}>Menu</button>
         <div className={`${styles.dropdownContent} ${isOpen ? styles.show : ''}`}>
           <a href="#section2" onClick={() => setIsOpen(false)}>Projects</a>
-          <a href="#">Contact Me</a>
+          <a href="#">Resume</a>
         </div>
       </div>
     </nav>

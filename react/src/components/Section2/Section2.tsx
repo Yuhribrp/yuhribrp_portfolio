@@ -1,8 +1,11 @@
 // import { PortfolioOwner } from '../../App';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import Modal from 'react-modal';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { BeatLoader } from 'react-spinners';
 import styles from './Section2.module.css';
+import { modalStyles } from './modalStyles';
 import cardBg1 from '../../assets/cards/card-bg1.jpg';
 import cardBg2 from '../../assets/cards/card-bg2.jpg';
 import cardBg3 from '../../assets/cards/card-bg3.jpg';
@@ -52,6 +55,15 @@ function useTilt() {
 
 function Slide({ slide }: { slide: typeof slides[0] }) {
   const tiltRef = useTilt();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (slide.link === "") {
+      e.preventDefault();
+      setIsModalOpen(true);
+    }
+  };
+
   return (
     <div className={styles.slide} ref={tiltRef}>
       <div
@@ -65,8 +77,24 @@ function Slide({ slide }: { slide: typeof slides[0] }) {
           className={styles.slideImageName}
           onMouseEnter={(e) => e.currentTarget.classList.add('animate')}
           onMouseLeave={(e) => e.currentTarget.classList.remove('animate')}
+          onClick={handleClick}
         >
-          {slide.imageName}</a>
+          {slide.imageName}
+        </a>
+        <Modal
+          isOpen={isModalOpen}
+          onRequestClose={() => setIsModalOpen(false)}
+          style={modalStyles}
+          contentLabel="Example Modal"
+        >
+          <div style={{ position: 'absolute', top: '.1rem', right: '.5rem', color: 'rgb(144, 26, 26)', cursor: 'pointer' }} onClick={() => setIsModalOpen(false)}>X</div>
+          <h2 style={{ fontSize: '1.3rem', marginBottom: '2rem', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)' }}>Projeto em Desenvolvimento</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <p>Disponível em Breve</p>
+            <br />
+            <BeatLoader color={"#123abc"} loading={true} size={6} />
+          </div>
+        </Modal>
       </div>
     </div>
   );
