@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
+  background-color: #1a1a1a;
   padding: 10px;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .dropdownButton {
-  background-color: #333;
+  background-color: #1a1a1a;
   color: white;
   padding: 10px;
   font-size: 16px;
@@ -29,6 +29,7 @@
 .dropdownButton:active, .dropdownButton:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+  border-color: white;
 }
 
 
@@ -42,6 +43,7 @@
   z-index: 1;
   font-size: 12px;
   border-radius: 5px;
+  animation: 0.5s ease-out 0s 1 slideIn;
 }
 
 .dropdownContent a {
@@ -67,4 +69,34 @@
 
 .show {
   display: block;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes buttonPress {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.dropdownButton:active {
+  animation: 0.2s ease 0s 1 buttonPress;
 }

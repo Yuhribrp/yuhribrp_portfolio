@@ -12,39 +12,39 @@ const slides = [
   {
     imageName: "Rolê Canino",
     image: cardBg1,
-    link: "#"
+    link: ""
   },
   {
     imageName: "Receipts Api",
     image: cardBg2,
-    link: "#"
+    link: ""
   },
   {
     imageName: "Cryptofolio",
     image: cardBg3,
-    link: "#"
+    link: ""
   },
   {
     imageName: "Torcida na Rede",
     image: cardBg4,
-    link: "#"
+    link: ""
   }
 ];
 
 function useTilt() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const tiltElement = ref.current;
-    const handleMouseMove = (event) => {
+    const handleMouseMove = (event: { pageX: number; pageY: number; }) => {
       if (!tiltElement) return;
       const { left, top, width, height } = tiltElement.getBoundingClientRect();
       const x = (event.pageX - left) / width - 0.5;
       const y = (event.pageY - top) / height - 0.5;
       tiltElement.style.transform = `rotateX(${-y * 10}deg) rotateY(${x * 10}deg)`;
     };
-    tiltElement.addEventListener('mousemove', handleMouseMove);
-    return () => tiltElement.removeEventListener('mousemove', handleMouseMove);
+    tiltElement?.addEventListener('mousemove', handleMouseMove);
+    return () => tiltElement?.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   return ref;
@@ -54,23 +54,12 @@ function Slide({ slide }: { slide: typeof slides[0] }) {
   const tiltRef = useTilt();
   return (
     <div className={styles.slide} ref={tiltRef}>
-      {/* <div
-        className={styles.slideBackground}
-        style={{
-          backgroundImage: `url('${slide.image}')`
-        }}
-      /> */}
       <div
         className={styles.slideContent}
         style={{
           backgroundImage: `url('${slide.image}')`
         }}
       >
-        {/* <div className={styles.slideContentInner}>
-          <h2 className={styles.slideTitle}>{slide.title}</h2>
-          <h3 className={styles.slideSubtitle}>{slide.subtitle}</h3>
-          <p className={styles.slideDescription}>{slide.description}</p>
-        </div> */}
         <a
           href={slide.link}
           className={styles.slideImageName}
@@ -85,18 +74,20 @@ function Slide({ slide }: { slide: typeof slides[0] }) {
 
 const Section2: React.FC = () => {
   return (
-    <Carousel
-      showArrows={true}
-      infiniteLoop={true}
-      showThumbs={false}
-      showStatus={false}
-      autoPlay={true}
-      interval={3000}
-    >
-      {slides.map((slide, i) => (
-        <Slide slide={slide} key={i} />
-      ))}
-    </Carousel>
+    <div id="section2">
+      <Carousel
+        showArrows={true}
+        infiniteLoop={true}
+        showThumbs={false}
+        showStatus={false}
+        autoPlay={true}
+        interval={3000}
+      >
+        {slides.map((slide, i) => (
+          <Slide slide={slide} key={i} />
+        ))}
+      </Carousel>
+    </div>
   );
 };
 

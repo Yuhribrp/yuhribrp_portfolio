@@ -1,4 +1,3 @@
-import React from 'react';
 import { PortfolioOwner } from '../../App';
 import styles from './Section1.module.css';
 import banner from '../../assets/banners/section1-banner.jpg';
