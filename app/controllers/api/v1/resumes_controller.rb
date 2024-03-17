@@ -20,8 +20,11 @@ class Api::V1::ResumesController < ApiController
     resume = @portfolio_owner.resume
     return render json: { error: 'Resume not found' }, status: :not_found unless resume
 
-    return render json: { errors: 'Unable do Delete Resume' }, status: :unprocessable_entity unless resume.pdf.purge
-    render json: { message: 'Pdf File Deleted' }, status: :ok
+    if resume.purge
+      render json: { errors: 'Unable do Delete Resume' }, status: :unprocessable_entity
+    else
+      render json: { message: 'Pdf File Deleted' }, status: :ok
+    end
   end
 
   private
