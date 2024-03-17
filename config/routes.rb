@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       resources :resumes, only: [:create]
       get '/resumes', to: 'resumes#show'
       delete '/resumes', to: 'resumes#destroy'
+      post '/upload_selfie', to: 'portfolio_owners#upload_selfie'
+      post '/download_selfie', to: 'portfolio_owners#download_selfie'
     end
   end
 end

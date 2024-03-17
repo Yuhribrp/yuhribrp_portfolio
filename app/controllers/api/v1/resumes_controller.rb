@@ -1,6 +1,6 @@
 class Api::V1::ResumesController < ApiController
-  before_action :verify_params, only: %i[create show destroy]
-  before_action :validate_portfolio_owner_record
+  before_action :params_email_validator, only: %i[create show destroy]
+  before_action :powner_record_validator
 
   def create
     resume = @portfolio_owner.build_resume(resume_params)
@@ -31,12 +31,5 @@ class Api::V1::ResumesController < ApiController
 
   def resume_params
     params.permit(:pdf)
-  end
-
-  def verify_params
-    email = params[:email]
-    regex = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-    return render json: { error: 'Wrong Params' }, status: :unprocessable_entity unless email
-    return render json: { error: 'Wrong Params Format' }, status: :unprocessable_entity unless email.match(regex)
   end
 end
