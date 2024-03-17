@@ -1,5 +1,5 @@
 class Api::V1::PortfolioOwnersController < ApiController
-  before_action :params_email_validator, only: %i[upload_selfie download_selfie]
+  before_action :params_email_validator, only: %i[upload_selfie]
   before_action :powner_record_validator, only: %i[upload_selfie download_selfie]
   before_action :selfie_params_validator, only: %i[upload_selfie]
 
@@ -11,8 +11,12 @@ class Api::V1::PortfolioOwnersController < ApiController
   end
 
   def show
-    portfolio_owner = PortfolioOwner.find(params[:id])
-    render json: portfolio_owner, status: :ok
+    begin
+      portfolio_owner = PortfolioOwner.find(params[:id])
+      render json: portfolio_owner, status: :ok
+    rescue => e
+      Puts "################### ERROR FUUUUUUUUUUU: #{e.message} ################### "
+    end
   end
 
   def upload_selfie

@@ -1,4 +1,3 @@
-import '../../public/build/tailwind.css';
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
@@ -21,19 +20,49 @@ export type PortfolioOwner = {
 
 function App() {
   const [portfolioOwner, setPortfolioOwner] = useState<PortfolioOwner | null>(null)
+  const [selfieUrl, setSelfieUrl] = useState<string | undefined>();
+  const [hasFetchedPortfolioOwner, setHasFetchedPortfolioOwner] = useState(false);
 
   useEffect(() => {
-    axios.get('api/v1/portfolio_owners/1').then(response => setPortfolioOwner(response.data)).catch(console.error)
-  }, [])
+    const fetchPortfolioOwner = async () => {
+      if (hasFetchedPortfolioOwner) return;
+
+      const response = await axios.get('api/v1/portfolio_owners/1');
+      setPortfolioOwner(response.data);
+      setHasFetchedPortfolioOwner(true);
+    };
+
+    const fetchSelfie = async () => {
+      const email = 'yuhriparada@gmail.com';
+      const response = await axios.post("api/v1/download_selfie", {
+        email: email,
+      }, {
+        responseType: 'blob'
+      });
+      const blob = new Blob([response.data], { type: response.headers['content-type'] });
+      const url = URL.createObjectURL(blob);
+      setSelfieUrl(url);
+      localStorage.setItem('selfieUrl', url);
+    };
+
+    const url = localStorage.getItem('selfieUrl');
+    if (url) {
+      setSelfieUrl(url);
+    } else {
+      fetchSelfie();
+    }
+
+    fetchPortfolioOwner();
+  }, [hasFetchedPortfolioOwner]);
 
   return (
     <>
       <Navbar />
-      <Section1 portfolioOwner={portfolioOwner} />
+      <Section1 portfolioOwner={portfolioOwner} selfieUrl={selfieUrl} />
       <Section2 />
       <Footer />
     </>
   )
 }
 
-export default App
+export default App;

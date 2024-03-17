@@ -4,14 +4,15 @@ import banner from '../../assets/banners/section1-banner.jpg';
 
 type Section1Props = {
   portfolioOwner: PortfolioOwner | null;
+  selfieUrl?: string;
 };
 
-const Section1: React.FC<Section1Props> = ({ portfolioOwner }) => {
+const Section1: React.FC<Section1Props> = ({ portfolioOwner, selfieUrl }) => {
   return (
     <section className={styles.section1}>
       <div className={styles.backgroundImage} style={{ backgroundImage: `url(${banner})` }}></div>
       <div className={styles.content}>
-        <img src={portfolioOwner?.selfie} alt="Selfie" className={styles.selfie} />
+        <img src={selfieUrl} alt="Selfie" className={styles.selfie} />
         <h2>{portfolioOwner?.name}</h2>
         <div className={styles.info}>
           <p>Age: {portfolioOwner?.age}</p>
