@@ -1,4 +1,4 @@
-class Api::V1::PortfolioOwnersController < ApplicationController
+class Api::V1::PortfolioOwnersController < ApiController
 
   def create
     portfolio_owner = PortfolioOwner.create(powner_params)
@@ -18,6 +18,6 @@ class Api::V1::PortfolioOwnersController < ApplicationController
   private
 
   def powner_params
-    params.require(:portfolio_owner).permit(:name, :age, :location, :about_me, :selfie, {projects: []}, {skills: []}, {technologies: []})
+    params.require(:portfolio_owner).permit(:name, :email, :age, :location, :about_me, :selfie, {projects: []}, {skills: []}, {technologies: []})
   end
 end
