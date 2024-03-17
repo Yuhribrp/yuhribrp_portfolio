@@ -12,7 +12,6 @@ export type PortfolioOwner = {
   age: number,
   location: string,
   about_me: string,
-  selfie: string,
   projects: string[],
   skills: string[],
   technologies: string[],
@@ -27,30 +26,21 @@ function App() {
     const fetchPortfolioOwner = async () => {
       if (hasFetchedPortfolioOwner) return;
 
-      const response = await axios.get('api/v1/portfolio_owners/1');
-      setPortfolioOwner(response.data);
-      setHasFetchedPortfolioOwner(true);
-    };
-
-    const fetchSelfie = async () => {
       const email = 'yuhriparada@gmail.com';
-      const response = await axios.post("api/v1/download_selfie", {
-        email: email,
-      }, {
-        responseType: 'blob'
-      });
-      const blob = new Blob([response.data], { type: response.headers['content-type'] });
+      const response = await axios.post(`api/v1/powner_profile`, { email });
+      const byteCharacters = atob(response.data.selfie);
+      const byteNumbers = new Array(byteCharacters.length);
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+      const byteArray = new Uint8Array(byteNumbers);
+      const blob = new Blob([byteArray], { type: 'image/jpeg' });
       const url = URL.createObjectURL(blob);
       setSelfieUrl(url);
       localStorage.setItem('selfieUrl', url);
+      setPortfolioOwner(response.data);
+      setHasFetchedPortfolioOwner(true);
     };
-
-    const url = localStorage.getItem('selfieUrl');
-    if (url) {
-      setSelfieUrl(url);
-    } else {
-      fetchSelfie();
-    }
 
     fetchPortfolioOwner();
   }, [hasFetchedPortfolioOwner]);

@@ -3,12 +3,12 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :portfolio_owners, only: [:create, :show]
+      resources :portfolio_owners, only: [:create]
+      post '/upload_selfie', to: 'portfolio_owners#upload_selfie'
+      post '/powner_profile', to: 'portfolio_owners#powner_profile'
       resources :resumes, only: [:create]
       get '/resumes', to: 'resumes#show'
       delete '/resumes', to: 'resumes#destroy'
-      post '/upload_selfie', to: 'portfolio_owners#upload_selfie'
-      post '/download_selfie', to: 'portfolio_owners#download_selfie'
     end
   end
 end

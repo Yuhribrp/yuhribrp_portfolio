@@ -1,6 +1,6 @@
 class Api::V1::PortfolioOwnersController < ApiController
-  before_action :params_email_validator, only: %i[upload_selfie]
-  before_action :powner_record_validator, only: %i[upload_selfie download_selfie]
+  before_action :params_email_validator, only: %i[upload_selfie powner_profile]
+  before_action :powner_record_validator, only: %i[upload_selfie powner_profile]
   before_action :selfie_params_validator, only: %i[upload_selfie]
 
   def create
@@ -10,22 +10,16 @@ class Api::V1::PortfolioOwnersController < ApiController
     render json: portfolio_owner, status: :created
   end
 
-  def show
-    begin
-      portfolio_owner = PortfolioOwner.find(params[:id])
-      render json: portfolio_owner, status: :ok
-    rescue => e
-      Puts "################### ERROR FUUUUUUUUUUU: #{e.message} ################### "
+  def powner_profile
+    encoded_selfie = @portfolio_owner.selfie.blob.open do |file|
+      Base64.encode64(file.read)
     end
+    render json: @portfolio_owner.as_json.merge!(selfie: encoded_selfie), status: :ok
   end
 
   def upload_selfie
     @portfolio_owner.selfie.attach(params[:selfie])
     render json: { message: 'Selfie Uploaded' }, status: :ok
-  end
-
-  def download_selfie
-    send_data @portfolio_owner.selfie.download, type: @portfolio_owner.selfie.content_type, disposition: 'inline'
   end
 
   def destroy
