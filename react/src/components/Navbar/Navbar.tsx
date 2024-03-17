@@ -1,6 +1,7 @@
-import YhLogo from '../../assets/logo/logoyh.png';
 import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import styles from './Navbar.module.css';
+import YhLogo from '../../assets/logo/logoyh.png';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,6 +33,18 @@ const Navbar: React.FC = () => {
     };
   }, [isOpen]);
 
+  const fetchResume = async (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+    const email = 'yuhriparada@gmail.com';
+    const response = await axios.get("api/v1/resumes", {
+      params: { email: email },
+      responseType: 'blob'
+    });
+    const blob = new Blob([response.data], { type: 'application/pdf' });
+    const pdfUrl = URL.createObjectURL(blob);
+    window.open(pdfUrl, '_blank');
+  };
+
   return (
     <nav className={styles.navbar}>
       <div className="flex items-center">
@@ -41,7 +54,7 @@ const Navbar: React.FC = () => {
         <button className={styles.dropdownButton} onClick={() => setIsOpen(!isOpen)}>Menu</button>
         <div className={`${styles.dropdownContent} ${isOpen ? styles.show : ''}`}>
           <a href="#section2" onClick={() => setIsOpen(false)}>Projects</a>
-          <a href="#">Resume</a>
+          <a href="#" onClick={fetchResume}>Resume</a>
         </div>
       </div>
     </nav>
