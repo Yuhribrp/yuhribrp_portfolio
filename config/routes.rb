@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  if ENV["RAILS_SERVE_STATIC_FILES"].present?
+    get "*path", to: static("index.html")
+    post "*path", to: static("index.html")
+  end
   get "up" => "rails/health#show", as: :rails_health_check
 
   namespace :api do
