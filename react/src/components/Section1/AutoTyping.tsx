@@ -28,7 +28,10 @@ const AutoTyping: React.FC<AutoTypingProps> = ({ text }) => {
     return () => clearTimeout(timer);
   }, [text, lineIndex, charIndex]);
 
-  return <p style={{ fontFamily: 'Courier New', color: 'lime' }}>{text[lineIndex].substring(0, charIndex)}</p>;
+  return <p style={{ fontFamily: 'Courier New', color: 'lime' }}>
+    {text[lineIndex].substring(0, charIndex)}
+    <span className="cursor">|</span>
+    </p>;
 };
 
 export default AutoTyping;

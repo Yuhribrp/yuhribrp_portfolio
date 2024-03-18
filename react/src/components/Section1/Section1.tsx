@@ -12,12 +12,12 @@ type Section1Props = {
 const Section1: React.FC<Section1Props> = ({ portfolioOwner, selfieUrl }) => {
   const firstName = portfolioOwner?.name.split(' ')[0];
   const typingText = [
-    `Hello, my name is ${firstName}`,
-    `I am ${portfolioOwner?.age} years old`,
-    `${portfolioOwner?.about_me}` ,
-    `From ${portfolioOwner?.location}`,
-    `You can see my resume up there in the Menu`,
-    `Feel free to reach out !`
+    ` > Hey There, my name is ${firstName}`,
+    `> I am ${portfolioOwner?.age} years old`,
+    `> ${portfolioOwner?.about_me}` ,
+    `> From ${portfolioOwner?.location}`,
+    `> You can see my resume up there in the Menu`,
+    `> Feel free to reach out`
   ];
 
   return (
@@ -28,9 +28,18 @@ const Section1: React.FC<Section1Props> = ({ portfolioOwner, selfieUrl }) => {
           <IconRow />
         </div>
         <img src={selfieUrl} alt="Selfie" className={styles.selfie} />
-        <div className={styles.pownerInfo}>
-          <AutoTyping text={typingText} />
-          <div style={{ width: '300px' }}></div>
+        <div className={styles.rightContent}>
+          <div className={styles.terminalHeader}>
+            <div className={styles.terminalButtons}>
+              <span className={styles.close}></span>
+              <span className={styles.minimize}></span>
+              <span className={styles.expand}></span>
+            </div>
+            <span>welcome.rb</span>
+          </div>
+          <div className={styles.pownerInfo}>
+            <AutoTyping text={typingText} />
+          </div>
         </div>
       </div>
     </section>

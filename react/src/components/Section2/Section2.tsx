@@ -1,4 +1,3 @@
-// import { PortfolioOwner } from '../../App';
 import React, { useRef, useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { Carousel } from 'react-responsive-carousel';
