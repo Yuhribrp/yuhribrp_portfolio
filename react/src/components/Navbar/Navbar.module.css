@@ -99,3 +99,12 @@
 .dropdownButton:active {
   animation: 0.2s ease 0s 1 buttonPress;
 }
+
+
+/* ADD RESPONSIVE */
+
+@media (max-width: 1288px) {
+  .navbar {
+    width: 120%;
+  }
+}

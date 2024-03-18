@@ -1,6 +1,7 @@
 import { PortfolioOwner } from '../../App';
 import styles from './Section1.module.css';
 import banner from '../../assets/banners/section1-banner.jpg';
+import IconRow from './IconRow';
 
 type Section1Props = {
   portfolioOwner: PortfolioOwner | null;
@@ -12,12 +13,17 @@ const Section1: React.FC<Section1Props> = ({ portfolioOwner, selfieUrl }) => {
     <section className={styles.section1}>
       <div className={styles.backgroundImage} style={{ backgroundImage: `url(${banner})` }}></div>
       <div className={styles.content}>
+        <div className={styles.leftContent}>
+          <IconRow />
+        </div>
         <img src={selfieUrl} alt="Selfie" className={styles.selfie} />
-        <h2>{portfolioOwner?.name}</h2>
-        <div className={styles.info}>
-          <p>Age: {portfolioOwner?.age}</p>
-          <p>Location: {portfolioOwner?.location}</p>
-          <p>About Me: {portfolioOwner?.about_me}</p>
+        <div className={styles.pownerInfo}>
+          <h2>{portfolioOwner?.name}</h2>
+          <div className={styles.info}>
+            <p>Age: {portfolioOwner?.age}</p>
+            <p>Location: {portfolioOwner?.location}</p>
+            <p>About Me: {portfolioOwner?.about_me}</p>
+          </div>
         </div>
       </div>
     </section>

@@ -155,3 +155,14 @@
     }
   }
 }
+
+/* ADD RESPONSIVE */
+@media (max-width: 1288px) {
+  .section2 {
+    width: 120%;
+  }
+
+  .slide, .slideContentInner, .slideDescription {
+    width: 120%;
+  }
+}

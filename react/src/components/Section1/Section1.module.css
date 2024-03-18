@@ -1,10 +1,12 @@
 .section1 {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
   height: 100vh;
   position: relative;
   margin-bottom: 3rem;
+  padding-top: 2rem;
+  overflow: hidden;
 }
 
 .backgroundImage {
@@ -21,10 +23,15 @@
 
 .content {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  animation: fadeIn 1s ease-in-out;
+  width: 100%;
+  padding: 0 4rem;
+  min-width: 1288px;
+}
+
+.leftContent, .selfie, .pownerInfo {
+  flex-shrink: 0;
 }
 
 .selfie {
@@ -32,7 +39,7 @@
   width: 300px;
   height: 300px;
   object-fit: contain;
-  margin-bottom: 30rem;
+  margin-bottom: 17rem;;
   box-shadow: rgba(255, 255, 255, 0.20) 0px 50px 100px -20px, rgba(255, 255, 255, 0.25) 0px 30px 60px -30px, rgba(10, 37, 64, 0.30) 0px -2px 6px 0px inset;
 }
 
@@ -40,6 +47,100 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
+}
+
+.pownerInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.iconRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  margin-top: 3rem;;
+}
+
+/* ADD RESPONSIVE */
+
+@media (max-width: 1288px) {
+  .section1 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 120%;
+  }
+
+  .selfie {
+    width: 250px;
+    height: 250px;
+  }
+
+  .iconRow>* {
+    font-size: 45px;
+  }
+  .pownerInfo {
+    width: 20%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .selfie {
+    width: 200px;
+    height: 200px;
+  }
+
+  .iconRow>* {
+    font-size: 40px;
+  }
+
+  .pownerInfo h2 {
+    font-size: 1.3rem;
+  }
+
+  .pownerInfo p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .selfie {
+    width: 150px;
+    height: 150px;
+  }
+
+  .iconRow>* {
+    font-size: 35px;
+  }
+
+  .pownerInfo h2 {
+    font-size: 1.1rem;
+  }
+
+  .pownerInfo p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 628px) {
+  .selfie {
+    width: 100px;
+    height: 100px;
+  }
+
+  .iconRow>* {
+    font-size: 30px;
+  }
+
+  .pownerInfo h2 {
+    font-size: 1rem;
+  }
+
+  .pownerInfo p {
+    font-size: 0.9rem;
+  }
 }
 
 @keyframes fadeIn {

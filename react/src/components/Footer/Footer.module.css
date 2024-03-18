@@ -56,10 +56,18 @@
   }
 }
 
+/* ADD RESPONSIVE */
+
 @media (max-width: 768px) {
   .footer {
     padding: 0.5rem;
     flex-direction: column;
     gap: 0.5rem;
+  }
+}
+
+@media (max-width: 1288px) {
+  .footer {
+    width: 120%;
   }
 }
