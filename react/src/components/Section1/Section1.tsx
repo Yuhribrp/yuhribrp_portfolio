@@ -1,5 +1,6 @@
 import { PortfolioOwner } from '../../App';
 import styles from './Section1.module.css';
+import AutoTyping from './AutoTyping';
 import banner from '../../assets/banners/section1-banner.jpg';
 import IconRow from './IconRow';
 
@@ -9,6 +10,16 @@ type Section1Props = {
 };
 
 const Section1: React.FC<Section1Props> = ({ portfolioOwner, selfieUrl }) => {
+  const firstName = portfolioOwner?.name.split(' ')[0];
+  const typingText = [
+    `Hello, my name is ${firstName}`,
+    `I am ${portfolioOwner?.age} years old`,
+    `${portfolioOwner?.about_me}` ,
+    `From ${portfolioOwner?.location}`,
+    `You can see my resume up there in the Menu`,
+    `Feel free to reach out !`
+  ];
+
   return (
     <section className={styles.section1}>
       <div className={styles.backgroundImage} style={{ backgroundImage: `url(${banner})` }}></div>
@@ -18,12 +29,8 @@ const Section1: React.FC<Section1Props> = ({ portfolioOwner, selfieUrl }) => {
         </div>
         <img src={selfieUrl} alt="Selfie" className={styles.selfie} />
         <div className={styles.pownerInfo}>
-          <h2>{portfolioOwner?.name}</h2>
-          <div className={styles.info}>
-            <p>Age: {portfolioOwner?.age}</p>
-            <p>Location: {portfolioOwner?.location}</p>
-            <p>About Me: {portfolioOwner?.about_me}</p>
-          </div>
+          <AutoTyping text={typingText} />
+          <div style={{ width: '300px' }}></div>
         </div>
       </div>
     </section>

@@ -43,10 +43,10 @@
   box-shadow: rgba(255, 255, 255, 0.20) 0px 50px 100px -20px, rgba(255, 255, 255, 0.25) 0px 30px 60px -30px, rgba(10, 37, 64, 0.30) 0px -2px 6px 0px inset;
 }
 
-.info {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+.selfie:hover {
+  transition: transform 1s;
+  transform: translateY(-5%) scale(1.09);
+  box-shadow: rgba(255, 255, 255, 0.25) 0px 50px 100px -20px, rgba(255, 255, 255, 0.30) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .pownerInfo {
@@ -55,6 +55,10 @@
   align-items: flex-start;
   justify-content: center;
   gap: 1rem;
+  width: 300px;
+  font-size: 1.5em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.713);
+  white-space: pre-wrap;
 }
 
 .iconRow {
