@@ -25,21 +25,23 @@ const Section1: React.FC<Section1Props> = ({ portfolioOwner, selfieUrl }) => {
       <div className={styles.backgroundImage} style={{ backgroundImage: `url(${banner})` }}></div>
       <div className={styles.content}>
         <div className={styles.leftContent}>
-          <IconRow />
-        </div>
-        <img src={selfieUrl} alt="Selfie" className={styles.selfie} />
-        <div className={styles.rightContent}>
-          <div className={styles.terminalHeader}>
-            <div className={styles.terminalButtons}>
-              <span className={styles.close}></span>
-              <span className={styles.minimize}></span>
-              <span className={styles.expand}></span>
+          <img src={selfieUrl} alt="Selfie" className={styles.selfie} />
+          <div className={styles.rightContent}>
+            <div className={styles.terminalHeader}>
+              <div className={styles.terminalButtons}>
+                <span className={styles.close}></span>
+                <span className={styles.minimize}></span>
+                <span className={styles.expand}></span>
+              </div>
+              <span>welcome.rb</span>
             </div>
-            <span>welcome.rb</span>
+            <div className={styles.pownerInfo}>
+              <AutoTyping text={typingText} />
+            </div>
           </div>
-          <div className={styles.pownerInfo}>
-            <AutoTyping text={typingText} />
-          </div>
+        </div>
+        <div className={styles.rightContent}>
+          <IconRow />
         </div>
       </div>
     </section>
