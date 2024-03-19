@@ -15,6 +15,8 @@ gem "rails-static-router"
 
 gem 'byebug'
 
+gem 'gem_bench', :group => :console
+
 
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
