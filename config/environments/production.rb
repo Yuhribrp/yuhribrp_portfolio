@@ -81,6 +81,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.serve_static_assets = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
