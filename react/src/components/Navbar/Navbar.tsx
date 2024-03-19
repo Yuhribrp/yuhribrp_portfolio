@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
 
   const fetchResume = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    const email = 'yuhribrp.dev@gmail.com';
+    const email = process.env.API_EMAIL;
     const response = await axios.get("api/v1/resumes", {
       params: { email: email },
       responseType: 'blob'

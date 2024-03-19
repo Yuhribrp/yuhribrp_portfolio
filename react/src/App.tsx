@@ -26,7 +26,7 @@ function App() {
     const fetchPortfolioOwner = async () => {
       if (hasFetchedPortfolioOwner) return;
 
-      const email = 'yuhribrp.dev@gmail.com';
+      const email = process.env.API_EMAIL;
       const response = await axios.post(`api/v1/powner_profile`, { email });
       const byteCharacters = atob(response.data.selfie);
       const byteNumbers = new Array(byteCharacters.length);
