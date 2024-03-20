@@ -2,8 +2,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1a1a1a;
+  background-color: transparent;
   padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: background-color 0.5s ease;
+}
+
+.scrolled {
+  background-color: #1a1a1a;
 }
 
 .logo {
@@ -13,36 +23,60 @@
 
 .dropdown {
   position: relative;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  /* Centraliza o menu */
+  align-items: center;
+  width: 100%;
+  /* Garante que o menu ocupe todo o espaço disponível */
 }
 
 .dropdownButton {
-  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  /* Alinha verticalmente o texto e a seta */
+  justify-content: center;
+  /* Centraliza horizontalmente o conteúdo */
+  position: relative;
+  /* Adiciona posição relativa para o botão de menu */
+  background-color: transparent;
   color: white;
   padding: 10px;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
   margin-right: 13px;
+  display: flex;
+  align-items: center;
+    /* Alinha verticalmente o texto e a seta */
+  justify-content: center;
+  border: none;
+    /* Centraliza horizontalmente o conteúdo */
 }
 
 .dropdownButton:active, .dropdownButton:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1); */
   border-color: white;
 }
 
 
 .dropdownContent {
-  margin-top: 5px;
-  display: none;
+  margin-top: 0;
+  /* Remove a margem superior */
   position: absolute;
-  right: 0;
+  top: 100%;
+  /* Ajusta a posição do dropdown */
+  margin-right: 0.85rem;
+  /* Centraliza o dropdown em relação ao botão de menu */
+  transform: translateX(-50%);
+  /* Ajusta a posição do dropdown */
   background-color: rgba(255, 255, 255, 0.7);
   min-width: 90px;
   z-index: 1;
   font-size: 12px;
   border-radius: 5px;
-  animation: 0.5s ease-out 0s 1 slideIn;
+  animation: dropdownSlideDown 0.5s ease-out forwards;
+  /* Aplica a animação */
 }
 
 .dropdownContent a {
@@ -53,6 +87,13 @@
   border-bottom: 1px solid #ddd;
   text-align: center;
   font-weight: bold;
+}
+
+.arrowDown {
+  height: 20px;
+  /* Ajuste o valor conforme necessário */
+  width: 20px;
+  /* Ajuste o valor conforme necessário */
 }
 
 .dropdownContent a:last-child {
@@ -70,15 +111,15 @@
   display: block;
 }
 
-@keyframes slideIn {
+@keyframes dropdownSlideDown {
   0% {
-    transform: translateY(-20px);
     opacity: 0;
+    transform: translateY(-10px);
   }
 
   100% {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -106,5 +147,12 @@
 @media (max-width: 1288px) {
   .navbar {
     width: 120%;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    position: static;
+    background-color: #1a1a1a;
   }
 }
