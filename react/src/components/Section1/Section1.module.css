@@ -1,7 +1,8 @@
 .section1 {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
   position: relative;
   margin-bottom: 3rem;
@@ -27,45 +28,54 @@
   align-items: center;
   width: 100%;
   padding: 0 4rem;
-  min-width: 1288px;
+}
+
+.leftContent {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
 }
 
 .leftContent,
 .selfie,
 .pownerInfo {
-  flex-shrink: 0;
+  flex: 1;
+  /* margin: auto; */
 }
 
 .selfie {
   border-radius: 50%;
-  width: 200px;
+  max-width: 200px;
   height: 200px;
   object-fit: contain;
   margin-bottom: 1rem;
-  box-shadow: rgba(255, 255, 255, 0.15) 0px 50px 100px -20px, rgba(255, 255, 255, 0.20) 0px 30px 60px -30px, rgba(10, 37, 64, 0.25) 0px -2px 6px 0px inset;
-  margin-bottom: 4rem;
+  box-shadow: rgba(255, 255, 255, 0.10) 0px 50px 100px -20px, rgba(255, 255, 255, 0.15) 0px 30px 60px -30px, rgba(10, 37, 64, 0.20) 0px -2px 6px 0px inset;
+  /* margin-bottom: 4rem; */
+  align-self: flex-start;
 }
 
 .selfie:hover {
   transition: transform 1s;
   transform: translateY(-5%) scale(1.09);
-  box-shadow: rgba(255, 255, 255, 0.20) 0px 50px 100px -20px, rgba(255, 255, 255, 0.25) 0px 30px 60px -30px, rgba(10, 37, 64, 0.30) 0px -2px 6px 0px inset;
+  box-shadow: rgba(255, 255, 255, 0.15) 0px 50px 100px -20px, rgba(255, 255, 255, 0.20) 0px 30px 60px -30px, rgba(10, 37, 64, 0.25) 0px -2px 6px 0px inset;
 }
 
 .pownerInfo {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
   background-color: #000;
   padding: 1rem;
   border-radius: 5px;
   white-space: pre-wrap;
   width: 250px;
-  height: 150px;
+  min-height: 200px;
   overflow: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 2em;
+  padding: 1em;
+  max-height: 150px;
 }
 
 .iconRow {
@@ -88,6 +98,22 @@
   100% {
     opacity: 1;
   }
+}
+
+.terminalContainer {
+  height: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.terminalHeader,
+.pownerInfo {
+  width: 40%;
+  height: 50%;
+  min-width: 40%
 }
 
 .terminalHeader {
@@ -130,12 +156,12 @@
   .section1 {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    width: 120%;
+    width: 100%;
   }
 
   .selfie {
-    width: 250px;
-    height: 250px;
+    width: 150px;
+    height: 150px;
   }
 
   .iconRow>* {
@@ -164,21 +190,23 @@
 }
 
 @media (max-width: 768px) {
+  .section1 {
+    height: auto;
+  }
+
+  /* .leftContent,
+  .selfie,
+  .pownerInfo {
+    width: 30vw;
+  } */
+
   .selfie {
-    width: 150px;
-    height: 150px;
+    width: 20vw;
+    height: 20vw;
   }
 
-  .iconRow>* {
-    font-size: 35px;
-  }
-
-  .pownerInfo h2 {
-    font-size: 1.1rem;
-  }
-
-  .pownerInfo p {
-    font-size: 1rem;
+  .pownerInfo {
+    font-size: 0.8rem;
   }
 }
 
@@ -200,6 +228,7 @@
     font-size: 0.9rem;
   }
 }
+
 
 @keyframes fadeIn {
   from {

@@ -25,20 +25,15 @@
   position: relative;
   display: flex;
   justify-content: center;
-  /* Centraliza o menu */
   align-items: center;
   width: 100%;
-  /* Garante que o menu ocupe todo o espaço disponível */
 }
 
 .dropdownButton {
   display: flex;
   align-items: center;
-  /* Alinha verticalmente o texto e a seta */
   justify-content: center;
-  /* Centraliza horizontalmente o conteúdo */
   position: relative;
-  /* Adiciona posição relativa para o botão de menu */
   background-color: transparent;
   color: white;
   padding: 10px;
@@ -47,36 +42,28 @@
   margin-right: 13px;
   display: flex;
   align-items: center;
-    /* Alinha verticalmente o texto e a seta */
   justify-content: center;
   border: none;
-    /* Centraliza horizontalmente o conteúdo */
 }
 
 .dropdownButton:active, .dropdownButton:focus {
   outline: none;
-  /* box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1); */
   border-color: white;
 }
 
 
 .dropdownContent {
   margin-top: 0;
-  /* Remove a margem superior */
   position: absolute;
   top: 100%;
-  /* Ajusta a posição do dropdown */
   margin-right: 0.85rem;
-  /* Centraliza o dropdown em relação ao botão de menu */
   transform: translateX(-50%);
-  /* Ajusta a posição do dropdown */
   background-color: rgba(255, 255, 255, 0.7);
   min-width: 90px;
   z-index: 1;
   font-size: 12px;
   border-radius: 5px;
   animation: dropdownSlideDown 0.5s ease-out forwards;
-  /* Aplica a animação */
 }
 
 .dropdownContent a {
@@ -91,9 +78,7 @@
 
 .arrowDown {
   height: 20px;
-  /* Ajuste o valor conforme necessário */
   width: 20px;
-  /* Ajuste o valor conforme necessário */
 }
 
 .dropdownContent a:last-child {
@@ -154,5 +139,7 @@
   .navbar {
     position: static;
     background-color: #1a1a1a;
+    max-width: 90%;
+    margin: auto;
   }
 }

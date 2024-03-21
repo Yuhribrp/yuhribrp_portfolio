@@ -10,7 +10,7 @@ const AutoTyping: React.FC<AutoTypingProps> = ({ text }) => {
 
   useEffect(() => {
     const typingSpeed = 100;
-    const nextLineDelay = 2000;
+    const nextLineDelay = 1500;
 
     let timer: NodeJS.Timeout;
 

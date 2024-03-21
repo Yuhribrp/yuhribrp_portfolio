@@ -87,9 +87,9 @@ function Slide({ slide }: { slide: typeof slides[0] }) {
           contentLabel="Example Modal"
         >
           <div style={{ position: 'absolute', top: '.1rem', right: '.5rem', color: 'rgb(144, 26, 26)', cursor: 'pointer' }} onClick={() => setIsModalOpen(false)}>X</div>
-          <h2 style={{ fontSize: '1.3rem', marginBottom: '2rem', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)' }}>Projeto em Desenvolvimento</h2>
+          <h2 style={{ fontSize: '1.3rem', marginBottom: '2rem', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)' }}>Project under development</h2>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-            <p>Disponível em Breve</p>
+            <p>available soon, stay tuned</p>
             <br />
             <BeatLoader color={"#123abc"} loading={true} size={6} />
           </div>

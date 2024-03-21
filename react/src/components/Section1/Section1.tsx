@@ -24,9 +24,9 @@ const Section1: React.FC<Section1Props> = ({ portfolioOwner, selfieUrl }) => {
     <section className={styles.section1}>
       <div className={styles.backgroundImage} style={{ backgroundImage: `url(${banner})` }}></div>
       <div className={styles.content}>
+        <img src={selfieUrl} alt="Selfie" className={styles.selfie} />
         <div className={styles.leftContent}>
-          <img src={selfieUrl} alt="Selfie" className={styles.selfie} />
-          <div className={styles.rightContent}>
+          <div className={styles.terminalContainer}>
             <div className={styles.terminalHeader}>
               <div className={styles.terminalButtons}>
                 <span className={styles.close}></span>
