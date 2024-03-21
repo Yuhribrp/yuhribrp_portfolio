@@ -78,6 +78,7 @@
   transform-style: preserve-3d;
   transform: perspective(1000px) translateX(calc(100% * var(--offset))) rotateY(calc(-45deg * var(--dir)));
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  cursor: pointer;
 }
 
 .slideContentInner {
@@ -122,15 +123,17 @@
   border-radius: 10px;
   padding: 4px 8px;
   transform-origin: center;
+  pointer-events: none;
+  cursor: none;
 }
 
-.slideImageName:hover {
+/* .slideImageName:hover {
   transition: transform 0.3s;
   transform: translateX(-50%) scale(1.1);
   background-color: rgba(255, 255, 255, 0.7);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   color: #3d43b7!important;
-}
+} */
 
 .slide[data-active] {
   z-index: 2;

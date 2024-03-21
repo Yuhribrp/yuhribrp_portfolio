@@ -56,37 +56,38 @@ function Slide({ slide }: { slide: typeof slides[0] }) {
   const tiltRef = useTilt();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (slide.link === "") {
       e.preventDefault();
       setIsModalOpen(true);
+    } else {
+      window.location.href = slide.link;
     }
   };
 
+  const handleCloseClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className={styles.slide} ref={tiltRef}>
+    <div className={styles.slide} ref={tiltRef} onClick={handleClick}>
       <div
         className={styles.slideContent}
         style={{
           backgroundImage: `url('${slide.image}')`
         }}
       >
-        <a
-          href={slide.link}
-          className={styles.slideImageName}
-          onMouseEnter={(e) => e.currentTarget.classList.add('animate')}
-          onMouseLeave={(e) => e.currentTarget.classList.remove('animate')}
-          onClick={handleClick}
-        >
+        <span className={styles.slideImageName}>
           {slide.imageName}
-        </a>
+        </span>
         <Modal
           isOpen={isModalOpen}
           onRequestClose={() => setIsModalOpen(false)}
           style={modalStyles}
           contentLabel="Example Modal"
         >
-          <div style={{ position: 'absolute', top: '.1rem', right: '.5rem', color: 'rgb(144, 26, 26)', cursor: 'pointer' }} onClick={() => setIsModalOpen(false)}>X</div>
+          <div style={{ position: 'absolute', top: '.1rem', right: '.5rem', color: 'rgb(144, 26, 26)', cursor: 'pointer' }} onClick={handleCloseClick}>X</div>
           <h2 style={{ fontSize: '1.3rem', marginBottom: '2rem', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)' }}>Project under development</h2>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
             <p>available soon, stay tuned</p>
