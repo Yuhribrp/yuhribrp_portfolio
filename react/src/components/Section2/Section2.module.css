@@ -164,6 +164,7 @@
 @media (max-width: 1288px) {
   .slides {
     justify-content: center;
+    max-width: 100%;
   }
 }
 

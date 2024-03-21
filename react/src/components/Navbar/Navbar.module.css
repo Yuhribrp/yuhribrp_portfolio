@@ -131,7 +131,7 @@
 
 @media (max-width: 1288px) {
   .navbar {
-    width: 120%;
+    width: 100%;
   }
 }
 
@@ -139,7 +139,7 @@
   .navbar {
     position: static;
     background-color: #1a1a1a;
-    max-width: 90%;
+    max-width: 100%;
     margin: auto;
   }
 }

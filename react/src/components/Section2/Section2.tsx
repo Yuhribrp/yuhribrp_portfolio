@@ -71,12 +71,13 @@ function Slide({ slide }: { slide: typeof slides[0] }) {
   };
 
   return (
-    <div className={styles.slide} ref={tiltRef} onClick={handleClick}>
+    <div className={styles.slide} ref={tiltRef}>
       <div
         className={styles.slideContent}
         style={{
           backgroundImage: `url('${slide.image}')`
         }}
+        onClick={handleClick} // Mova o evento de clique para cá
       >
         <span className={styles.slideImageName}>
           {slide.imageName}
