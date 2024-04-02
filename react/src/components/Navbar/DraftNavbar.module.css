@@ -1,0 +1,145 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: background-color 0.5s ease;
+}
+
+.scrolled {
+  background-color: #1a1a1a;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+}
+
+.dropdown {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.dropdownButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: transparent;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.dropdownButton:active, .dropdownButton:focus {
+  outline: none;
+  border-color: white;
+}
+
+
+.dropdownContent {
+  margin-top: 0;
+  position: absolute;
+  top: 100%;
+  margin-right: 0.85rem;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  min-width: 90px;
+  z-index: 1;
+  font-size: 12px;
+  border-radius: 5px;
+  animation: dropdownSlideDown 0.5s ease-out forwards;
+}
+
+.dropdownContent a {
+  color: black;
+  padding: 8px 4px;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  font-weight: bold;
+}
+
+.arrowDown {
+  height: 20px;
+  width: 20px;
+}
+
+.dropdownContent a:last-child {
+  border-bottom: none;
+}
+
+.dropdownContent a:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  color: rgb(73, 80, 193);
+  font-weight: bold;
+}
+
+.show {
+  display: block;
+}
+
+@keyframes dropdownSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes buttonPress {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.dropdownButton:active {
+  animation: 0.2s ease 0s 1 buttonPress;
+}
+
+
+/* Responsive */
+
+@media (max-width: 1288px) {
+  .navbar {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    position: static;
+    background-color: #1a1a1a;
+    max-width: 100%;
+    margin: auto;
+  }
+}
