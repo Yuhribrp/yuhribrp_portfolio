@@ -17,6 +17,8 @@ gem 'byebug'
 
 gem 'gem_bench', :group => :console
 
+gem 'dotenv', groups: [:development, :test]
+
 
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
