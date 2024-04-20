@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: yuhribrp_portifolio_production
-  username: yuhribrp_portifolio
-  password: <%= ENV["YUHRIBRP_PORTIFOLIO_DATABASE_PASSWORD"] %>
+  database: <%= ENV["DATABASE_URL"] %>
