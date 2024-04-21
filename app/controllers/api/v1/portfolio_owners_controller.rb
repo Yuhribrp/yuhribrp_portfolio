@@ -11,10 +11,11 @@ class Api::V1::PortfolioOwnersController < ApiController
   end
 
   def powner_profile
-    encoded_selfie = @portfolio_owner.selfie.blob.open do |file|
-      Base64.encode64(file.read)
-    end
-    render json: @portfolio_owner.as_json.merge!(selfie: encoded_selfie), status: :ok
+    # encoded_selfie = @portfolio_owner.selfie.blob.open do |file|
+    #   Base64.encode64(file.read)
+    # end
+    # render json: @portfolio_owner.as_json.merge!(selfie: encoded_selfie), status: :ok
+    render json: @portfolio_owner.as_json, status: :ok
   end
 
   def upload_selfie
